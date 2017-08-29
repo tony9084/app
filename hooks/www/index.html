@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <title>ass1 ToDoList App</title>
+  
+  <script src="cordova.js"></script>
+  <script src="js/platformOverrides.js"></script>
+  <script src="js/angular.min.js"></script>
+  <script src="js/angular-resource.min.js"></script>
+
+  
+  <link href="css/main.css" rel="stylesheet">
+
+</head>
+<body ng-app="xPlat">
+    <section id="todoapp" ng-controller="ToDoCtrl">
+        <header id="header">
+            <div id="headerBand"></div>
+            <input id="new-todo" placeholder="What needs to be done?" ng-text-change="addToDo()" ng-model="newToDoText" autofocus>
+        </header>
+        <section id="main">
+            <div id="todo-list">
+                <div class="templateWrapper" ng-repeat="toDoItem in todos">
+                    <div class="templateContainer">
+                        <input class="templateTitle" ng-class="{crossedOut: toDoItem.done}" type="text" ng-text-change="changeToDoText(toDoItem)" ng-model="toDoItem.text" />
+                        <h3 class="templateAddress">{{toDoItem.address}}</h3>
+                        <button class="templateLeft templateToggle" ng-class="{'checked': toDoItem.done, 'unchecked': !toDoItem.done}" ng-mousedown="toggleToDoDone(toDoItem)"></button>
+                        <button class="templateLeft templateRemove" ng-click="removeToDo(toDoItem)"></button>
+                    </div>
+                    <div class="templateBorder"></div>
+                </div>
+            </div>
+        </section>
+    </section>
+    
+
+    <script src="js/index.js"></script>
+    <script src="js/services.js"></script>
+    <script src="js/controllers.js"></script>
+    <script src="js/directives.js"></script>
+</body>
+</html>
